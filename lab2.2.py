@@ -87,7 +87,29 @@ phase = draw(polar_spectr[:, 1], "p", "Phi(p)", "Polar Spectr", "Phase")
 plt.legend(handles=[phase], loc='upper right')
 plt.grid()
 plt.show()
-
+@get_func_time
+def get_F(x):
+    N = len(x)
+    FR = []
+    Fi = []
+    for p in range(N):
+        FR.append(0)
+        Fi.append(0)
+        for k in range(N):
+            FR[p] += x[k]*math.cos(-2*math.pi*p*k/N)
+            Fi[p] += x[k]*math.sin(-2*math.pi*p*k/N)
+    return FR, Fi@get_func_time
+def get_F(x):
+    N = len(x)
+    FR = []
+    Fi = []
+    for p in range(N):
+        FR.append(0)
+        Fi.append(0)
+        for k in range(N):
+            FR[p] += x[k]*math.cos(-2*math.pi*p*k/N)
+            Fi[p] += x[k]*math.sin(-2*math.pi*p*k/N)
+    return FR, Fi
 
 
 def make_table(signal):
